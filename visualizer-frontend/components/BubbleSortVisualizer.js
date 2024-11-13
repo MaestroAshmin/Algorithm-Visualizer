@@ -18,7 +18,7 @@ class BubbleSortVisualizer extends React.Component {
         this.setState({ isSorting: true });
 
         try {
-            const response = await fetch('http://localhost:8000/sort/bubble', {
+            const response = await fetch('http://192.168.1.102:8000/sort/bubble', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         width: '100%',  // Ensure the button takes full width
     },
     image: {
-        width: '100%',  // Full width of the container
+        width: '90%',  // Full width of the container
         height: '80%',  // Adjust height to fit within the screen
         aspectRatio: 1,  // Maintain aspect ratio for the image
     },
