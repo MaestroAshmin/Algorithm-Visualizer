@@ -3,28 +3,23 @@ version: '3.8'
 services:
   backend:
     build:
-      context: .  # Set the build context to the visualizer-backend directory
-      dockerfile: ./visualizer-backend/Dockerfile  # Explicitly specify the path to the backend Dockerfile
+      context: ./visualizer-backend  # Set the build context to the visualizer-backend folder
+      dockerfile: Dockerfile  # Specify the Dockerfile in the backend directory
     ports:
-      - "8000:8000"  # Expose port 8000 for the backend service
-    environment:
-      # You can add environment variables if your backend requires them
-      - SOME_ENV_VAR=some_value
+      - "8000:8000"
     networks:
       - app-network
 
   frontend:
     build:
-      context:   # Set the build context to the visualizer-frontend directory
-      dockerfile: ./visualizer-frontend/Dockerfile  # Explicitly specify the path to the frontend Dockerfile
+      context: ./visualizer-frontend  # Set the build context to the visualizer-frontend folder
+      dockerfile: Dockerfile  # Specify the Dockerfile in the frontend directory
     ports:
-      - "19006:19006"  # Expose port 19006 for the Expo web frontend (adjust if needed)
-    depends_on:
-      - backend  # Ensure the backend starts before the frontend
-    environment:
-      - API_URL=http://backend:8000  # Set backend URL to communicate with the backend container
+      - "80:80"  # Expose port 80 for the frontend service
     networks:
       - app-network
+    depends_on:
+      - backend  # Ensure the backend starts first
 
 networks:
   app-network:
