@@ -4,12 +4,12 @@ FROM node:18-alpine as build
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
-COPY visualizer-frontend/package.json visualizer-frontend/yarn.lock ./
+# Copy package.json and yarn.lock to the container and install dependencies
+COPY ./visualizer-frontend/package.json ./visualizer-frontend/yarn.lock ./
 RUN yarn install
 
-# Copy the rest of the application code
-COPY visualizer-frontend/ ./
+# Copy the rest of the frontend application code
+COPY ./visualizer-frontend/ ./ 
 
 # Build the Expo app for web
 RUN yarn web --non-interactive

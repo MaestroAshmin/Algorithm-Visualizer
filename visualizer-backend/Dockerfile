@@ -9,15 +9,15 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Copy the requirements file into the container
-COPY visualizer-backend/requirements.txt ./
+COPY ./visualizer-backend/requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the backend code into the container
-COPY visualizer-backend/ ./
+COPY ./visualizer-backend/ .
 
-# Expose the backend port
+# Expose the backend port (adjust if your backend uses a different port)
 EXPOSE 8000
 
 # Run the backend server
