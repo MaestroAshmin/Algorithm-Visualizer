@@ -5,11 +5,11 @@ FROM node:18-alpine as build
 WORKDIR /app
 
 # Copy package.json and install dependencies
-COPY package.json yarn.lock ./
+COPY visualizer-frontend/package.json visualizer-frontend/yarn.lock ./
 RUN yarn install
 
 # Copy the rest of the application code
-COPY . .
+COPY visualizer-frontend/ ./
 
 # Build the Expo app for web
 RUN yarn web --non-interactive
