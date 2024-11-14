@@ -15,7 +15,7 @@ COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the backend code into the container
-COPY backend/ .
+COPY visualizer-backend/ .
 
 # Expose the backend port (adjust if your backend uses a different port)
 EXPOSE 8000
