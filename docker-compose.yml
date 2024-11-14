@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: .  # Set the build context to the root directory
-      dockerfile: backend/Dockerfile  # Explicitly specify the path to the backend Dockerfile
+      dockerfile: visualizer-backend/Dockerfile  # Explicitly specify the path to the backend Dockerfile
     ports:
       - "8000:8000"  # Expose port 8000 for the backend service
     environment:
@@ -17,7 +17,7 @@ services:
   frontend:
     build:
       context: .  # Set the build context to the root directory
-      dockerfile: frontend/Dockerfile  # Explicitly specify the path to the frontend Dockerfile
+      dockerfile: visualizer-frontend/Dockerfile  # Explicitly specify the path to the frontend Dockerfile
     ports:
       - "19006:19006"  # Expose port 19006 for the Expo web frontend (adjust if needed)
     depends_on:
