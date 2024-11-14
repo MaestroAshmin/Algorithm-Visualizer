@@ -30,7 +30,7 @@ class BubbleSortVisualizer extends React.Component {
         }
 
         try {
-            const response = await fetch('http://192.168.1.102:8000/sort/bubble', {
+            const response = await fetch('http://backend:8000/sort/bubble', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
