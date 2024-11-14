@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .  # Set the build context to the root directory
+      dockerfile: backend/Dockerfile  # Explicitly specify the path to the backend Dockerfile
+    ports:
+      - "8000:8000"  # Expose port 8000 for the backend service
+    environment:
+      # You can add environment variables if your backend requires them
+      - SOME_ENV_VAR=some_value
+    networks:
+      - app-network
+    # No need for depends_on for backend, as it's the first to start by default
+
+  frontend:
+    build:
+      context: .  # Set the build context to the root directory
+      dockerfile: frontend/Dockerfile  # Explicitly specify the path to the frontend Dockerfile
+    ports:
+      - "19006:19006"  # Expose port 19006 for the Expo web frontend (adjust if needed)
+    depends_on:
+      - backend  # Ensure the backend starts before the frontend
+    environment:
+      - API_URL=http://backend:8000  # Set backend URL to communicate with the backend container
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
